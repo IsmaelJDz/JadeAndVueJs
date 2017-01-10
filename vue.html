@@ -1,0 +1,30 @@
+<!DOCTYPE html5>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE-edge"/>
+    <title>Ejemplo con vue js</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <script src="vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <template v-if="name">
+        <h1>{{ gender == 'm' ? 'Bienvenida' : 'Bienvenido' }}, {{ name }}</h1>
+        <p>Espero que disfrutes tu visita</p>
+        <p>Tu nombre al revés es : {{ name.split('').reverse().join('') }}</p>
+      </template>
+      <p v-else="v-else">Por favor escribe tu nombre</p>
+      <input class="form-control" type="text" v-model="name"/><br/>
+      <select class="form-control" v-model="gender">
+        <option value="h">Hombre</option>
+        <option value="m">Mujer</option>
+      </select>
+      <p class="alert alert-danger" v-if="name == ''">Este campo es obligatorio</p>
+      <p class="alert alert-danger" v-if="name.length &lt; 2">El nombre no es valido</p>
+      <hr/>
+      <pre>{{ $data | json}}</pre>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
